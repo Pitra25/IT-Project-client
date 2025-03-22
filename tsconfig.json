@@ -23,11 +23,12 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "*": ["*"],
-      "@/public/*": ["public/*"],
-      "@/components": ["features/kit/components/"],
+      "@/public/*": ["../public/*"],
+      "@/components": ["features/kit/components"],
+      "@/store": ["store"],
       "@/utils": ["utils"],
       "@/hooks": ["hooks"],
-      "@/core/*": ["core/*"],
+      "@/core": ["core"],
       "@/pathsConfig": ["router/entities/paths.config.ts"],
       "@/globalTypes": ["types/global.types.ts"],
     }

@@ -1,15 +1,18 @@
 import styled from 'styled-components'
 
 export const HeaderStyledWrapper = styled.header`
+    position: sticky;
+    top: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 15px;
-    background: rgba(34, 34, 34, 0.95);
+    background: ${({ theme }) => theme.colors.header.background};
     backdrop-filter: blur(6px);
    
     a, h1, button {
-        color: white;
+        color: ${({ theme }) => theme.text};
         text-decoration: none;
         font-size: 20px;
         font-optical-sizing: auto;

@@ -6,8 +6,8 @@ import RouterProtect from '../RouterProtect.tsx'
 
 import { homRoutes } from '../../features/hom/routes/hom.routes.tsx'
 import { clusterRoutes } from '../../features/cluster/routes/cluster.routes.tsx'
-import { servicesRoutes } from '../../features/services/routes/services.routes.tsx'
 import { contactsRoutes } from '../../features/contacts/routes/contacts.routes.tsx'
+import { servicesRoutes } from '../../features/services/routes/services.routes.tsx'
 
 export const routesConfig = [
     {
@@ -20,8 +20,8 @@ export const routesConfig = [
                 children: [
                     ...homRoutes,
                     ...clusterRoutes,
-                    ...servicesRoutes,
-                    ...contactsRoutes
+                    ...contactsRoutes,
+                    ...servicesRoutes
                 ]
             }
         ]
