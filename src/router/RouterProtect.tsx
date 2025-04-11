@@ -3,7 +3,7 @@ import { Navigate, Outlet, useLocation  } from 'react-router-dom'
 
 import { Header, Footer} from '@/components'
 import { pathsConfig } from '@/pathsConfig'
-import { useAuth } from '@/auth/hooks/useAuth.ts'
+import { useAuth } from '../features/auth/hooks/useAuth'
 import {ContentWrapper, RouterProtectWrapper} from "./RouterProtect.styled.ts";
 
 const RouterProtect: FC = () => {

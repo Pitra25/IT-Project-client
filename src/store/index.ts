@@ -1,5 +1,5 @@
 import { api } from '@/core'
-import { authActions, authReducer } from '@/auth/store/auth.slice.ts'
+import { authActions, authReducer } from '../features/auth/store/auth.slice'
 
 export const reducers = {
     [api.reducerPath]: api.reducer,
