@@ -1,0 +1,86 @@
+{
+    "title_name": {
+        "part1": "",
+        "part2": ""
+    },
+    "subtitle_name": {
+        "part1": "",
+        "part2": ""
+    },
+    "nav": {
+        "header": {
+            "hom": "",
+            "cluster": {
+                "title": "",
+                "content": {
+                    "link_1": "",
+                    "link_2": ""
+                }
+            },
+            "services": {
+                "title": "",
+                "content": {
+                    "link_1": "",
+                    "link_2": "",
+                    "link_3": "",
+                    "link_4": {
+                        "title": "",
+                        "content": {
+                            "link_4_1": "",
+                            "link_4_2": ""
+                        }
+                    }
+                }
+            },
+            "Contact": "",
+            "Feedback": ""
+        }
+    },
+    "footer": {
+        "content": {}
+    },
+    "Page_hom": {
+        "title": "",
+        "content": {}
+    },
+    "Page_cluster": {
+        "title": "",
+        "content": {}
+    },
+    "Page_services": {
+        "title": "",
+        "content": {}
+    },
+    "Page_contact": {
+        "title": "",
+        "content": {}
+    },
+    "error_ok": {
+        "login": {
+            "error": "",
+            "ok": ""
+        },
+        "password": {
+            "error": "",
+            "ok": ""
+        },
+        "error": ""
+    },
+    "messages": {
+        "placeholder": {
+            "input": {
+                "text1": "",
+                "text2": ""
+            },
+            "status": {
+                "status1": "",
+                "status2": ""
+            }
+        },
+        "modal": {
+            "text_btn": "",
+            "close": ""
+        },
+        "text": ""
+    }
+}

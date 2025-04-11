@@ -1,112 +1,138 @@
-import { type FC, useEffect, useState, createContext } from "react"
-
-import Arrows from "./components/Controls/Arrows"
-import Dots from "./components/Controls/Dots"
-import SlidesList from "./components/SlidesList"
+import { type FC, useState, useEffect, useRef } from 'react'
 import { SliderWrapper } from './Slider.styled.ts'
 
-export const SliderContext = createContext('slider')
-
-interface SliderProps {
-    data?: {}[]
-    width?: string,
-    height?: string,
-    autoPlay?: boolean,
-    autoPlayTime?: number
+interface CarouselProps {
+    items: React.ReactNode[]
+    autoPlay?: boolean
+    interval?: number
+    showControls?: boolean
+    showDots?: boolean
 }
 
-const getImages = (length = 10) => {
-    return fetch(`https://api.thecatapi.com/v1/breeds`)
-        .then((response) => response.json())
-        .then((response) => {
-            const images: any = [];
-            response.forEach((c: any) => {
-                const title = c?.description;
-                const url = c?.image?.url;
+const Carousel: FC<CarouselProps> = ({ items, autoPlay = false, interval = 5000,
+                                               showControls = true, showDots = true}) => {
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [isPaused, setIsPaused] = useState(false)
+    const touchStartX = useRef<number | null>(null)
+    const touchEndX = useRef<number | null>(null);
+    const intervalRef = useRef<NodeJS.Timeout>();
+    const carouselRef = useRef<HTMLDivElement>(null);
 
-                images.push({ title, url });
-            });
-            return images.slice(0, length); // remove the extra cats
-        });
-};
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === items.length - 1 ? 0 : prevIndex + 1
+        )
+    }
 
-const Slider: FC <SliderProps> =  ({ width = '100%', height = '100%', autoPlay = false, autoPlayTime = 5000 }) => {
-    const [items, setItems] = useState([])
-    const [slide, setSlide] = useState(0)
-    const [touchPosition, setTouchPosition] = useState(null)
+    const goToPrev = () => {
+        setCurrentIndex((prevIndex) =>
+            prevIndex === 0 ? items.length - 1 : prevIndex - 1
+        )
+    }
+
+    const goToSlide = (index: number) => { setCurrentIndex(index) }
+
+    const handleTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX
+    }
+
+    const handleTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.touches[0].clientX
+    }
+
+    const handleTouchEnd = () => {
+        if (!touchStartX.current || !touchEndX.current) return
+
+        const diff = touchStartX.current - touchEndX.current
+        if (diff > 50) { goToNext()
+        } else if (diff < -50) { goToPrev() }
+
+        touchStartX.current = null
+        touchEndX.current = null
+    };
 
     useEffect(() => {
-        const loadData = async () => {
-            const images = await getImages();
-            setItems(images);
-        };
-        loadData();
-    }, []);
-
-    const changeSlide = (direction = 1) => {
-        let slideNumber = 0;
-
-        if (slide + direction < 0) {
-            slideNumber = items.length - 1
-        } else {
-            slideNumber = (slide + direction) % items.length
+        if (autoPlay && !isPaused && items.length > 1) {
+            intervalRef.current = setInterval(goToNext, interval)
+            return () => {
+                if (intervalRef.current) clearInterval(intervalRef.current)
+            }
         }
+    }, [autoPlay, interval, isPaused, items.length])
 
-        setSlide(slideNumber)
-    }
-    const goToSlide = (number: number) => {
-        setSlide(number % items.length)
-    }
-    const handleTouchStart = (e: any) => {
-        const touchDown = e.touches[0].clientX
-        setTouchPosition(touchDown)
-    }
-    const handleTouchMove = (e: any) => {
-        if (touchPosition === null) return
-
-        const currentPosition = e.touches[0].clientX
-        const direction = touchPosition - currentPosition
-
-        if (direction > 10) changeSlide(1)
-        if (direction < -10) changeSlide(-1)
-
-        setTouchPosition(null)
-    }
+    const handleMouseEnter = () => setIsPaused(true)
+    const handleMouseLeave = () => setIsPaused(false)
 
     useEffect(() => {
-        if (!autoPlay) return
-
-        const interval = setInterval(() => {
-            changeSlide(1)
-        }, autoPlayTime)
-
-        return () => clearInterval(interval)
-    }, [items.length, slide]) // when images uploaded or slide changed manually we start timer
+        if (carouselRef.current && items.length > 0) {
+            const firstSlide = carouselRef.current.querySelector('slide')
+            if (firstSlide) {
+                carouselRef.current.style.height = `${firstSlide.clientHeight}px`
+            }
+        }
+    }, [items])
 
     return (
         <SliderWrapper>
             <div
-                style={{ width, height }}
-                className="slider"
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
+                ref={carouselRef}
+                className='carousel className'
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
             >
-                <SliderContext.Provider
-                    value={{
-                        goToSlide,
-                        changeSlide,
-                        slidesCount: items.length,
-                        slideNumber: slide,
-                        items
-                    }}
+                <div
+                    className='slidesContainer'
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                 >
-                    <Arrows />
-                    <SlidesList />
-                    <Dots />
-                </SliderContext.Provider>
+                    {items.map((item, index) => (
+                        <div key={index} className='slide'>
+                            { item }
+                        </div>
+                    ))}
+                </div>
+
+                { showControls && items.length > 1 && (
+                    <>
+                        <button
+                            className='controlButton prevButton'
+                            onClick={goToPrev}
+                            aria-label="Previous slide"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        <button
+                            className='controlButton nextButton'
+                            onClick={goToNext}
+                            aria-label="Next slide"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </>
+                )}
+
+                {showDots && items.length > 1 && (
+                    <div className='dotsContainer'>
+                        {items.map((_, index) => (
+                            <button
+                                key={index}
+                                className={'dot' + `${index === currentIndex ? 'activeDot' : ''}`}
+                                onClick={() => goToSlide(index)}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
         </SliderWrapper>
     )
 }
 
-export default Slider
+export default Carousel;
+

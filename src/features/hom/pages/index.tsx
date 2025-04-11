@@ -2,14 +2,23 @@ import { type FC } from 'react'
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom"
 import { pathsConfig } from "@/pathsConfig"
-import { Slider, Card, CardList } from "@/components"
+import {Card, CardList } from "@/components"
 import { Events, Residents } from "../../../contents";
 
 import { HomWrapper } from './Hom.styled.tsx'
+import Carousel from "../../kit/components/Slider";
 
 const Hom: FC = () => {
     const { t } = useTranslation()
     const homCount = 'Hom.content'
+
+    const slides = [
+        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
+        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
+        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
+        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>
+    ]
+
     return (
         <HomWrapper>
 
@@ -46,8 +55,13 @@ const Hom: FC = () => {
             <div className="resident_container">
                 <span>{t('title')}</span>
 
-                <Slider/>
-
+                <Carousel
+                    items={slides}
+                    autoPlay
+                    interval={5000}
+                    showControls
+                    showDots
+                />
                 <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>
             </div>
 
