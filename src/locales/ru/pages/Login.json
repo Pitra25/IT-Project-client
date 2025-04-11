@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Авторизация",
+    "form": {
+      "label_login": "Логин",
+      "label_password": "Пароль",
+      "btn": "Войти"
+    }
+  }
+}

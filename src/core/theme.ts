@@ -1,28 +1,43 @@
 import { DefaultTheme } from 'styled-components'
 import { ThemeEnum, ITheme } from '../interfaces/styled'
 
-// ITheme - используется для статичной темы
+// ITheme - used for static theme
 export const baseTheme : ITheme = {
     colors: {
-        background: '#141414',
-        primary: '#7986cb',
-        secondary: '#2b2b2b',
-        success: '#4caf50',
-        danger: '#000',
-
-        header: {
-            background: '#707070',
-            border: '#363738',
-            btn: '#000'
+        background: 'rgba(164,212,186,0.8)',
+        link_text: {
+            black: '#000',
+            white: '#FFFFFF'
         },
 
-        bg: '#E5E4E8',
-        font: '#19191B',
+        header: {
+            background: '#A4D4BA',
+            additional: {}
+        },
+        footer: {
+            background: '#A4D4BA',
+            additional: {}
+        },
+
+        cards: {
+            background: '#ffffff',
+            border: '1px solid #9EBAC9',
+            border_radius_card: '27px',
+            button: {
+                background: 'rgba(164,212,186,0.81)',
+            },
+            text: {
+                title: '#000',
+                description: '#117575',
+                text: "#000",
+            },
+            images: {
+                border_radius: '13px'
+            },
+            additional: {}
+        },
 
         additional: {
-            text: '#e1e3e6',
-            gray_text: '#939393',
-            revert_text: '#222222',
             hover: '#262626',
         }
     },
@@ -35,10 +50,6 @@ export const baseTheme : ITheme = {
         medium: '16px',
         large: '24px',
     },
-    shadows: {
-        small: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        medium: '0 4px 8px rgba(0, 0, 0, 0.2)',
-    },
     breakpoints: {
         mobile: '480px',
         tablet: '768px',
@@ -50,26 +61,9 @@ export const baseTheme : ITheme = {
         medium: '(max-width: 720px)',
         small: '(max-width: 540px)',
     },
-
-    // in px
-    sizes: {
-        header: { height: 56 },
-        container: { width: 1200 },
-        footer: { height: 128 },
-        modal: { width: 540 },
-    },
-    // in ms
-    durations: {
-        ms300: 300,
-    },
-    // z-index
-    order: {
-        header: 50,
-        modal: 100,
-    },
 }
 
-// DefaultTheme - используется для динамических тем
+// DefaultTheme - used for dynamic themes
 export const lightTheme: DefaultTheme = {
     ...baseTheme,
     type: ThemeEnum.light,

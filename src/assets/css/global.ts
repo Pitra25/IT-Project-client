@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     * {
-        font-family: 'Noto Sans, sans-serif';
+        font-family: ${({ theme }) => theme.fonts.noto_sans};
     }
     
     html, body {

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "id_001",
+    "nameImages": "img1.png",
+    "img": true
+  },
+  {
+    "id": "id_002",
+    "nameImages": "img2.png",
+    "img": true
+  },
+  {
+    "id": "id_003",
+    "nameImages": "img3.png",
+    "img": true
+  }
+]

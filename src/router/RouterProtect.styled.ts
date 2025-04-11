@@ -7,7 +7,8 @@ export const RouterProtectWrapper = styled.div`
     flex-direction: column;
 `
 
-export const ContentWrapper = styled.div` 
+export const ContentWrapper = styled.div`
     flex: 1;
     overflow: auto;    
+    background: ${({theme}) => theme.colors.background};
 `

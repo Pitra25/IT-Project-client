@@ -1,8 +1,6 @@
 import { type FC, type ReactNode } from 'react'
 
-import {
-    CardWrapper
-} from './Card.styled.tsx'
+import { CardWrapper } from './Card.styled.tsx'
 
 interface Props {
     children: ReactNode

@@ -8,9 +8,14 @@ export const NavStyledWrapper = styled.nav`
     justify-content: space-evenly;
     background: ${({ theme }) => theme.colors.header.background};
     
-    a {
-        color: ${({ theme }) => theme.colors.header.btn};
+    font-family: ${({ theme }) => theme.fonts.noto_sans};   
+    
+    .fontSize {
+        font-size: 18px;
+        margin-right: 5px;
+        color: ${({ theme }) => theme.colors.link_text.black};
     }
+    
 `
 
 export const DropdownWrapper = styled.div`
@@ -23,10 +28,9 @@ export const DropdownWrapper = styled.div`
     /* Dropdown button */
     .dropbtn {
         padding: 16px;
-        font-size: 16px;
         border: none;
-        font-family: ${({ theme }) => theme.fonts.noto_sans};
-        color: ${({ theme }) => theme.colors.header.btn};
+        margin-right: 5px;
+        cursor: pointer;
     }
    
     /* Dropdown Content (Hidden by Default) */
@@ -35,7 +39,7 @@ export const DropdownWrapper = styled.div`
         position: absolute;
         width: max-content;
         display: none;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         transition: all 3s ease;
         background: rgba(124, 124, 124, 0.92);
     }
@@ -46,12 +50,10 @@ export const DropdownWrapper = styled.div`
         padding: 12px 16px;
         text-decoration: none;
         font-family: ${({ theme }) => theme.fonts.noto_sans};
-        font-size: 15px;
-        color: ${({ theme }) => theme.colors.header.btn};
     }
     
     /* Change color of dropdown links on hover */
-    .dropdown-content a:hover { color: ${({ theme }) => theme.colors.header.btn}; }
+    .dropdown-content a:hover { color: ${({ theme }) => theme.colors.link_text.black}; }
    
     /* Show dropdown menu on hover */
     .dropdown:hover .dropdown-content { display: block; }
@@ -72,10 +74,8 @@ export const DropdownWrapperNested = styled.div`
     /* Dropdown button */
     .dropbtn-nested {
         padding: 16px;
-        font-size: 16px;
         border: none;
-        font-family: ${({ theme }) => theme.fonts.noto_sans};
-        color: ${({ theme }) => theme.colors.header.btn};
+        cursor: pointer;
     }
 
     /* Dropdown Content (Hidden by Default) */
@@ -94,13 +94,10 @@ export const DropdownWrapperNested = styled.div`
         display: block;
         padding: 12px 16px;
         text-decoration: none;
-        font-family: ${({ theme }) => theme.fonts.noto_sans};
-        font-size: 15px;
-        color: ${({ theme }) => theme.colors.header.btn};
     }
 
     /* Change color of dropdown links on hover */
-    .dropdown-content-nested a:hover { color: ${({ theme }) => theme.colors.header.btn}; }
+    .dropdown-content-nested a:hover { color: ${({ theme }) => theme.colors.link_text.black}; }
 
     /* Show dropdown menu on hover */
     .dropdown-nested:hover .dropdown-content-nested { display: block; }

@@ -1,0 +1,71 @@
+{
+    "title_name": {
+        "part1": "CLUS",
+        "part2": "TER"
+    },
+    "subtitle_name": {
+        "part1": "SOCIAL AND TECHNOLOGICAL",
+        "part2": "DEVELOPMENT OF TERRITORIES"
+    },
+    "nav": {
+        "header": {
+            "hom": "Home",
+            "cluster": {
+                "title": "Cluster",
+                "content": {
+                    "link_1": "Our team",
+                    "link_2": "Mission and values"
+                }
+            },
+            "services": {
+                "title": "Services",
+                "content": {
+                    "link_1": "3D-print",
+                    "link_2": "Milling processing",
+                    "link_3": "Reverse engineering",
+                    "link_4": {
+                        "title": "Building and structure design",
+                        "content": {
+                            "link_4_1": "Examples of projects",
+                            "link_4_2": "Ready-made projects for implementation"
+                        }
+                    }
+                }
+            },
+            "Contact": "Contact",
+            "Feedback": "Feedback"
+            }
+        },
+    "footer": {
+        "content": {}
+    },
+    "error_ok": {
+        "login": {
+            "no": "Please enter your login!",
+            "error": "The login entered is invalid!"
+        },
+        "password": {
+            "no": "Please enter your password!",
+            "error": "The password must be at least 9 characters long and include uppercase letters, numbers, and special characters such as \"#@&\"."
+
+        },
+        "error": "Something went wrong."
+    },
+    "messages": {
+        "placeholder": {
+            "input": {
+                "login": "Enter login",
+                "password": "Enter password"
+            },
+            "status": {
+                "loading": "Loading...",
+                "status2": ""
+            }
+        },
+        "modal": {
+            "text_btn": "Read more",
+            "close": "Close"
+        },
+        "text": "Successful login to your account"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "Hom": {
+        "title": "Home",
+        "content": {
+            "card": {
+                "card1": "Quality of Life",
+                "card2": "High-tech\nsolutions",
+                "card3": "Production efficiency"
+            }
+        }
+    }
+}

@@ -1,26 +1,26 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import translationEN from './locales/en/translation.json';
-import translationRU from './locales/ru/translation.json';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import { translationRu }from './locales/ru'
+import { translationEn } from "./locales/en";
 
-// Ресурсы для переводов
+// Translation resources
 const resources = {
     en: {
-        translation: translationEN,
+        translation: translationEn
     },
     ru: {
-        translation: translationRU,
+        translation: translationRu
     },
-};
+}
 
-// Инициализация i18next
+// Initialization i18next
 i18n.use(initReactI18next).init({
     resources,
-    lng: 'en', // Язык по умолчанию
-    fallbackLng: 'en', // Язык, используемый, если перевод не найден
+    lng: 'ru', // Default language
+    fallbackLng: 'en', // Language to use if translation is not found
     interpolation: {
-        escapeValue: false, // Не экранировать HTML-теги в переводах
+        escapeValue: false, // Do not escape HTML tags in translations
     },
-});
+})
 
 export default i18n;

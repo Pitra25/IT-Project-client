@@ -8,6 +8,8 @@ import { homRoutes } from '../../features/hom/routes/hom.routes.tsx'
 import { clusterRoutes } from '../../features/cluster/routes/cluster.routes.tsx'
 import { contactsRoutes } from '../../features/contacts/routes/contacts.routes.tsx'
 import { servicesRoutes } from '../../features/services/routes/services.routes.tsx'
+import { adminRoutes } from "../../features/admin/routes/admin.routes.tsx"
+import { authRoutes } from '@/auth/routes/auth.routes.tsx'
 
 export const routesConfig = [
     {
@@ -21,7 +23,9 @@ export const routesConfig = [
                     ...homRoutes,
                     ...clusterRoutes,
                     ...contactsRoutes,
-                    ...servicesRoutes
+                    ...servicesRoutes,
+                    ...adminRoutes,
+                    ...authRoutes
                 ]
             }
         ]

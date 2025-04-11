@@ -12,8 +12,10 @@ export default defineConfig({
       '@/utils': path.resolve(__dirname, './src/utils'),
       '@/store': path.resolve(__dirname, './src/store'),
       '@/hooks': path.resolve(__dirname, './src/hooks'),
+      "@/auth/*": path.resolve(__dirname, './src/features/auth/*'),
       '@/pathsConfig': path.resolve(__dirname, './src/router/entities/paths.config.ts'),
-      '@/globalTypes': path.resolve(__dirname, './src/types/global.types.ts')
+      '@/globalTypes': path.resolve(__dirname, './src/types/global.types.ts'),
+      "@/assets": path.resolve(__dirname, 'contents/Assets')
     }
   },
   plugins: [react()]

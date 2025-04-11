@@ -1,28 +1,25 @@
 declare namespace Collections {
     interface User {
         id: number
-        nick: string
-        name: string
-        email: string
+        login: string
         password: string
-        updatedAt: string
-        createdAt: string
-        histories: Collections.History[]
+        organization: string
     }
 
-    interface History {
+    export interface Project {
         id: number
-        downloadSpeed: number
-        uploadSpeed: number
-        coordinates: number[]
-        createdAt: string
-        user?: Collections.User
+        name: string
+        type: string
+        author: Collections.User
+        image_name: string
+        content: string
     }
 
-    interface CreateHistoryPayload {
-        downloadSpeed: number
-        uploadSpeed: number
-        coordinates: number[]
-        userId?: number
+    export interface Events {
+        id: number
+        name: string
+        image_name: string
+        content: string
+        created_at: string
     }
 }
