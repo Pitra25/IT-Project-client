@@ -11,7 +11,7 @@ import GlobalStyle from './assets/css/global.ts'
 import 'antd/dist/reset.css'
 import 'react-toastify/dist/ReactToastify.css'
 import '@coreui/coreui/dist/css/coreui.min.css'
-import './assets'
+import './assets/'
 
 const container = document.getElementById('root') as HTMLElement
 const root = createRoot(container)

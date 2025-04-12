@@ -6,7 +6,7 @@ import {Card, CardList } from "@/components"
 import { Events, Residents } from "../../../contents";
 
 import { HomWrapper } from './Hom.styled.tsx'
-import Carousel from "../../kit/components/Slider";
+import Carousel from "../../kit/components/Carousel";
 
 const Hom: FC = () => {
     const { t } = useTranslation()
