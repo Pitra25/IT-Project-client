@@ -12,6 +12,7 @@ export const MainButtonStyledWrapper = styled.div`
         align-items: center;
         //padding: 12px;
         border-radius: 10px;
+        cursor: pointer;
         
         background: ${({theme}) => theme.colors.cards.button.background};
         color: ${({theme}) => theme.colors.cards.text.text};

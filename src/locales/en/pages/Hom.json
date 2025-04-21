@@ -1,11 +1,36 @@
 {
     "Hom": {
         "title": "Home",
-        "content": {
+        "screensaver": {
+            "title": "Our mission",
+            "subtitle": "We combine competencies to ensure that social and technological processes proceed in the right direction and as efficiently as possible."
+        },
+        "section_content": {
+            "title": "",
             "card": {
                 "card1": "Quality of Life",
                 "card2": "High-tech\nsolutions",
                 "card3": "Production efficiency"
+            }
+        },
+        "section_events": {
+            "title": "News and Events"
+        },
+        "section_resident": {
+            "title": "Residents"
+        },
+        "section_Feedback": {
+            "title": "Feedback",
+            "Feedback": {
+                "label_name": "Name",
+                "label_surname": "Surname",
+                "label_email": "Email",
+                "label_message": "Message",
+                "btn": "Send"
+            },
+            "map": {
+                "address": "Address",
+                "comment": "not"
             }
         }
     }

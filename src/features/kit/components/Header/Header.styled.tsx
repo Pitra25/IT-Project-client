@@ -4,13 +4,22 @@ export const HeaderStyledWrapper = styled.header`
     position: sticky;
     top: 0;
     width: 100%;
+    height: 110px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 5px;
+    align-items: center;
+    justify-content: center;
     background: ${({theme}) => theme.colors.header.background};
-    backdrop-filter: blur(6px);
     z-index: 10;
+    
+    .container{
+        width: 100%;
+        max-width: 2000px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px;
+        margin: 0 100px;
+    }
 
     .header_container {
         display: flex;
@@ -30,6 +39,7 @@ export const HeaderStyledWrapper = styled.header`
         font-optical-sizing: auto;
         font-weight: normal;
         font-style: normal;
+        cursor: pointer;
     }
 
     button:hover {
@@ -37,7 +47,8 @@ export const HeaderStyledWrapper = styled.header`
     }
 
     .nav {
-        width: 1000px;
+        width: 100%;
+        display: flex;
         justify-content: center;
         align-items: center;
     }
@@ -81,53 +92,70 @@ export const HeaderStyledWrapper = styled.header`
     }
 
     .container_contacts_language {
-        width: 250px;
+        width: 100%;
+        max-width: 264px;
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-around;
-
+        justify-content: space-between;
+        //gap: 30px;
+        
+        .language {
+            width: 64px;
+            height: 24px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            border-radius: 5px;
+            background: #111;
+            
+            button {
+                width: 25px;
+                font-size: 16px;
+                color: #DAEAE1;
+                //margin-left: 5px;
+            }
+            .active {
+                position: relative;
+                width: 34px;
+                height: 30px;
+                border: 1px solid #DAEAE1;
+                border-radius: 5px;
+                background: #DAEAE1;
+                color: black;
+                
+                &.right{
+                    left: 4px;
+                }
+                &.left{
+                    left: -4px;
+                }
+            }
+        }
+        
         .contact {
+            width: 170px;
             display: flex;
             flex-direction: column;
+            gap: 12px;
+            
+            .contact_number_phone, .contact_email {
+                display: flex;
+                flex-direction: row;
+                gap: 12px;
+
+                .email_icon{
+                    width: 26px;    
+                }
+                .phone_icon{
+                    width: 26px;
+                }
+            }
         }
     }
-
-    .language {
-        width: 64px;
-        height: 24px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid black;
-        border-radius: 5px;
-        background: #111;
-        color: #DAEAE1;
-        
-        button {
-            width: 25px;
-            font-size: 16px;
-            //margin-left: 5px;
-        }
-        .active {
-            position: relative;
-            width: 34px;
-            height: 30px;
-            border: 1px solid #DAEAE1;
-            border-radius: 5px;
-            background: #DAEAE1;
-            color: black;
-        }
-        .right{
-            left: 4px;
-        }
-        .left{
-            left: -4px;
-        }
-    }
-
-
+    
     .subheading {
         display: flex;
         flex-direction: row;

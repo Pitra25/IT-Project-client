@@ -1,22 +1,18 @@
-import { type FC, useState, useEffect, useRef } from 'react'
-import { SliderWrapper } from './Slider.styled.ts'
+import { type FC, useState } from 'react'
+import { Card_Modal } from '@/components'
+import { useTranslation } from 'react-i18next'
+
+import { CarouselWrapper } from './Slider.styled.ts'
+
+import Arrow from './components/pictures/Icon_arrow.png'
 
 interface CarouselProps {
-    items: React.ReactNode[]
-    autoPlay?: boolean
-    interval?: number
-    showControls?: boolean
-    showDots?: boolean
+    items: {}[]
 }
 
-const Carousel: FC<CarouselProps> = ({ items, autoPlay = false, interval = 5000,
-                                               showControls = true, showDots = true}) => {
+const Carousel: FC<CarouselProps> = ({ items }) => {
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [isPaused, setIsPaused] = useState(false)
-    const touchStartX = useRef<number | null>(null)
-    const touchEndX = useRef<number | null>(null);
-    const intervalRef = useRef<NodeJS.Timeout>();
-    const carouselRef = useRef<HTMLDivElement>(null);
+    const { t } = useTranslation()
 
     const goToNext = () => {
         setCurrentIndex((prevIndex) =>
@@ -30,109 +26,192 @@ const Carousel: FC<CarouselProps> = ({ items, autoPlay = false, interval = 5000,
         )
     }
 
-    const goToSlide = (index: number) => { setCurrentIndex(index) }
-
-    const handleTouchStart = (e: React.TouchEvent) => {
-        touchStartX.current = e.touches[0].clientX
-    }
-
-    const handleTouchMove = (e: React.TouchEvent) => {
-        touchEndX.current = e.touches[0].clientX
-    }
-
-    const handleTouchEnd = () => {
-        if (!touchStartX.current || !touchEndX.current) return
-
-        const diff = touchStartX.current - touchEndX.current
-        if (diff > 50) { goToNext()
-        } else if (diff < -50) { goToPrev() }
-
-        touchStartX.current = null
-        touchEndX.current = null
-    };
-
-    useEffect(() => {
-        if (autoPlay && !isPaused && items.length > 1) {
-            intervalRef.current = setInterval(goToNext, interval)
-            return () => {
-                if (intervalRef.current) clearInterval(intervalRef.current)
-            }
-        }
-    }, [autoPlay, interval, isPaused, items.length])
-
-    const handleMouseEnter = () => setIsPaused(true)
-    const handleMouseLeave = () => setIsPaused(false)
-
-    useEffect(() => {
-        if (carouselRef.current && items.length > 0) {
-            const firstSlide = carouselRef.current.querySelector('slide')
-            if (firstSlide) {
-                carouselRef.current.style.height = `${firstSlide.clientHeight}px`
-            }
-        }
-    }, [items])
-
     return (
-        <SliderWrapper>
-            <div
-                ref={carouselRef}
-                className='carousel className'
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
-                <div
-                    className='slidesContainer'
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
+        <CarouselWrapper>
+            <div className="carousel_container">
+
+                <button
+                    className='controlButton prevButton'
+                    onClick={goToPrev}
+                    aria-label="Previous slide"
                 >
-                    {items.map((item, index) => (
-                        <div key={index} className='slide'>
-                            { item }
+                    <img src={Arrow} alt='arrow picture'/>
+                </button>
+
+                <div
+                    className="slides"
+                    style={{ transform: `translateX(-${currentIndex * 100}px)` }}
+                >
+                    {items.map((item: any, index) => (
+                        <div key={index} className='slide'
+                             // style={{ transform: `translateX(-${currentIndex * 100}px)` }}
+                        >
+                            <Card_Modal
+                                titleText={t(`${item.id}.name`)} title={true}
+                                content={t(`${item.id}.content`)} images={item.nameImages}
+                                nameImg={item.nameImages} variant={'pictureTitle'}/>
                         </div>
                     ))}
                 </div>
 
-                { showControls && items.length > 1 && (
-                    <>
-                        <button
-                            className='controlButton prevButton'
-                            onClick={goToPrev}
-                            aria-label="Previous slide"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </button>
-                        <button
-                            className='controlButton nextButton'
-                            onClick={goToNext}
-                            aria-label="Next slide"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </>
-                )}
+                <button
+                    className='controlButton nextButton'
+                    onClick={goToNext}
+                    aria-label="Next slide"
+                >
+                    <img src={Arrow} alt='arrow picture'/>
+                </button>
 
-                {showDots && items.length > 1 && (
-                    <div className='dotsContainer'>
-                        {items.map((_, index) => (
-                            <button
-                                key={index}
-                                className={'dot' + `${index === currentIndex ? 'activeDot' : ''}`}
-                                onClick={() => goToSlide(index)}
-                                aria-label={`Go to slide ${index + 1}`}
-                            />
-                        ))}
-                    </div>
-                )}
             </div>
-        </SliderWrapper>
+        </CarouselWrapper>
     )
 }
 
-export default Carousel;
+export default Carousel
 
+
+// import { type FC, useState, useEffect, useRef } from 'react'
+// import { SliderWrapper } from './Slider.styled.ts'
+// import { Card_Modal } from "../Card";
+// import { useTranslation } from "react-i18next";
+//
+// interface CarouselProps {
+//     items: {}[]
+//     autoPlay?: boolean
+//     interval?: number
+//     showControls?: boolean
+//     showDots?: boolean
+// }
+//
+// const Carousel: FC<CarouselProps> = ({ items, autoPlay = false, interval = 5000,
+//                                          showControls = true, showDots = true}) => {
+//     const [currentIndex, setCurrentIndex] = useState(0)
+//     const [isPaused, setIsPaused] = useState(false)
+//     const touchStartX = useRef<number | null>(null)
+//     const touchEndX = useRef<number | null>(null)
+//     const intervalRef = useRef<NodeJS.Timeout>()
+//     const carouselRef = useRef<HTMLDivElement>(null)
+//     const { t } = useTranslation()
+//
+//     const goToNext = () => {
+//         setCurrentIndex((prevIndex) =>
+//             prevIndex === items.length - 1 ? 0 : prevIndex + 1
+//         )
+//     }
+//
+//     const goToPrev = () => {
+//         setCurrentIndex((prevIndex) =>
+//             prevIndex === 0 ? items.length - 1 : prevIndex - 1
+//         )
+//     }
+//
+//     const goToSlide = (index: number) => { setCurrentIndex(index) }
+//
+//     const handleTouchStart = (e: React.TouchEvent) => {
+//         touchStartX.current = e.touches[0].clientX
+//     }
+//
+//     const handleTouchMove = (e: React.TouchEvent) => {
+//         touchEndX.current = e.touches[0].clientX
+//     }
+//
+//     const handleTouchEnd = () => {
+//         if (!touchStartX.current || !touchEndX.current) return
+//
+//         const diff = touchStartX.current - touchEndX.current
+//         if (diff > 50) { goToNext()
+//         } else if (diff < -50) { goToPrev() }
+//
+//         touchStartX.current = null
+//         touchEndX.current = null
+//     };
+//
+//     useEffect(() => {
+//         if (autoPlay && !isPaused && items.length > 1) {
+//             intervalRef.current = setInterval(goToNext, interval)
+//             return () => {
+//                 if (intervalRef.current) clearInterval(intervalRef.current)
+//             }
+//         }
+//     }, [autoPlay, interval, isPaused, items.length])
+//
+//     const handleMouseEnter = () => setIsPaused(true)
+//     const handleMouseLeave = () => setIsPaused(false)
+//
+//     useEffect(() => {
+//         if (carouselRef.current && items.length > 0) {
+//             const firstSlide = carouselRef.current.querySelector('slide')
+//             if (firstSlide) {
+//                 carouselRef.current.style.height = `${firstSlide.clientHeight}px`
+//             }
+//         }
+//     }, [items])
+//
+//
+//     return (
+//         <SliderWrapper>
+//             <div
+//                 ref={carouselRef}
+//                 className='carousel'
+//                 onMouseEnter={handleMouseEnter}
+//                 onMouseLeave={handleMouseLeave}
+//             >
+//                 <div
+//                     className='slidesContainer'
+//                     style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+//                     onTouchStart={handleTouchStart}
+//                     onTouchMove={handleTouchMove}
+//                     onTouchEnd={handleTouchEnd}
+//                 >
+//                     {items.map((item: any, index) => (
+//                         <div key={index} className='slide'>
+//                             <Card_Modal
+//                                 titleText={t(`${item.id}.name`)} title={true}
+//                                 content={t(`${item.id}.content`)} images={item.nameImages}
+//                                 nameImg={item.nameImages} variant={'mineCard'}/>
+//                         </div>
+//                     ))}
+//                 </div>
+//
+//                 { showControls && items.length > 1 && (
+//                     <>
+//                         <button
+//                             className='controlButton prevButton'
+//                             onClick={goToPrev}
+//                             aria-label="Previous slide"
+//                         >
+//                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+//                             </svg>
+//                         </button>
+//                         <button
+//                             className='controlButton nextButton'
+//                             onClick={goToNext}
+//                             aria-label="Next slide"
+//                         >
+//                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+//                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+//                             </svg>
+//                         </button>
+//                     </>
+//                 )}
+//
+//                 {showDots && items.length > 1 && (
+//                     <div className='dotsContainer'>
+//                         {items.map((_, index) => (
+//                             <button
+//                                 key={index}
+//                                 className={'dot ' + `${index === currentIndex ? 'activeDot' : ''}`}
+//                                 onClick={() => goToSlide(index)}
+//                                 aria-label={`Go to slide ${index + 1}`}
+//                             />
+//                         ))}
+//                     </div>
+//                 )}
+//             </div>
+//         </SliderWrapper>
+//     )
+// }
+//
+// export default Carousel;
+//

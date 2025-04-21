@@ -1,9 +1,9 @@
-import { HomPaths } from './hom.paths.ts'
-import Hom from '../pages'
+import { HomePaths } from './hom.paths.ts'
+import Home from '../pages'
 
-export const homRoutes = [
+export const homeRoutes = [
     {
-        path: HomPaths.hom,
-        element: <Hom />
+        path: HomePaths.home,
+        element: <Home />
     }
 ]

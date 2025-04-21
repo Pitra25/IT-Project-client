@@ -13,11 +13,13 @@ dist-ssr
 Full_translated.tsx
 *.local
 
+.env
+.env.example
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj

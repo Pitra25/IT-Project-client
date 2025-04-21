@@ -1,10 +1,11 @@
 import styled from "styled-components"
 
 export const CardListWrapper = styled.div`
-    max-width: 1520px;
     height: 100%;
-    margin-top: 15px;
-    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //flex-wrap: wrap;
     
     .column{
         display: flex;
@@ -14,6 +15,7 @@ export const CardListWrapper = styled.div`
     .row{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 24px;
     }
 `

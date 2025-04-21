@@ -13,5 +13,20 @@
     "id": "id_003",
     "nameImages": "img6.png",
     "img": true
+  },
+  {
+    "id": "id_004",
+    "nameImages": "img4.png",
+    "img": true
+  },
+  {
+    "id": "id_005",
+    "nameImages": "img5.png",
+    "img": true
+  },
+  {
+    "id": "id_006",
+    "nameImages": "img6.png",
+    "img": true
   }
 ]

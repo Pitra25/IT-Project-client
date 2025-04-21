@@ -1,76 +1,94 @@
 import { type FC } from 'react'
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom"
-import { pathsConfig } from "@/pathsConfig"
-import {Card, CardList } from "@/components"
-import { Events, Residents } from "../../../contents";
+import { Card, CardList, Feedback, Maps, Carousel } from "@/components"
+import { Events, Residents } from "../../../contents"
 
 import { HomWrapper } from './Hom.styled.tsx'
-import Carousel from "../../kit/components/Carousel";
+import home_screensaver from '../components/home_screensaver.png'
 
-const Hom: FC = () => {
+const Home: FC = () => {
     const { t } = useTranslation()
-    const homCount = 'Hom.content'
-
-    const slides = [
-        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
-        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
-        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>,
-        <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>
-    ]
+    const homCount = 'Hom.section_content'
 
     return (
         <HomWrapper>
 
-            <div className='img_container'>
+            <section className='img_container'>
+                <img src={home_screensaver} alt=""/>
                 <div className='text_container'>
-                    <span className='text_title'>{t('Hom.title')}</span>
-                    <span className='text_description'>{t('title')}</span>
+                    <span>{t('Hom.screensaver.title')}</span>
+                    <span>{t('Hom.screensaver.subtitle')}</span>
                 </div>
-            </div>
+            </section>
 
-            <div className='card_container'>
-                <Card className='card'>
-                    <div>
-                        <span>{t(homCount + '.card.card1')}</span>
+            <section className='card_container'>
+                <div className="content">
+                    <Card className='card'>
+                        <div>
+                            <span>{t(homCount + '.card.card1')}</span>
+                        </div>
+                    </Card>
+                    <Card className='card'>
+                        <div>
+                            <span>{t(homCount + '.card.card2')}</span>
+                        </div>
+                    </Card>
+                    <Card className='card'>
+                        <div>
+                            <span>{t(homCount + '.card.card3')}</span>
+                        </div>
+                    </Card>
+                </div>
+            </section>
+
+            <section className="events_container">
+                <div className="content">
+                    <span className='title events_title'>
+                        {t('Hom.section_events.title')}
+                    </span>
+                    <CardList content={Events} title={true} type={'Card_Modal'} variant={'linerCard'} direction={"column"}/>
+                </div>
+            </section>
+
+            <section className="resident_container">
+                <div className="content">
+                    <span className='title resident_title'>
+                        {t('Hom.section_resident.title')}
+                    </span>
+
+                    {/*<Carousel*/}
+                    {/*    items={ Residents }*/}
+                    {/*    autoPlay*/}
+                    {/*    interval={5000}*/}
+                    {/*    showControls*/}
+                    {/*    showDots={false}*/}
+                    {/*/>*/}
+
+                    {/*<CarouselCard title={false} itemsCard={Residents}/>*/}
+
+                    <Carousel items={Residents}/>
+
+                </div>
+            </section>
+
+            <section className='feedback_container'>
+                <div className="content">
+                    <span className='title feedback_title'>
+                        {t('Hom.section_Feedback.title')}
+                    </span>
+
+                    <div className="feedback_content">
+                        <div className="feedback">
+                            <Feedback/>
+                        </div>
+
+                        <Maps/>
                     </div>
-                </Card>
-                <Card className='card'>
-                    <div>
-                        <span>{t(homCount + '.card.card2')}</span>
-                    </div>
-                </Card>
-                <Card className='card'>
-                    <div>
-                        <span>{t(homCount + '.card.card3')}</span>
-                    </div>
-                </Card>
-            </div>
+                </div>
+            </section>
 
-            <div className="events_container">
-                <span>{t('tile')}</span>
-                <CardList content={Events} title={true} type={'Card_Modal'} variant={'linerCard'} direction={"column"}/>
-            </div>
-
-            <div className="resident_container">
-                <span>{t('title')}</span>
-
-                <Carousel
-                    items={slides}
-                    autoPlay
-                    interval={5000}
-                    showControls
-                    showDots
-                />
-                <CardList content={Residents} title={false} type={'Card_Modal'} variant={'mineCard'} direction={"row"}/>
-            </div>
-
-            <Link to={pathsConfig.login} className={`link`}
-                  data-type='login'>
-                 login
-            </Link>
         </HomWrapper>
     )
 }
 
-export default Hom
+export default Home

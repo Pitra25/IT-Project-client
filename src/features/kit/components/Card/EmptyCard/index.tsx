@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from 'react'
+import {type FC, type ReactNode, useId} from 'react'
 
 import { CardWrapper } from './Card.styled.tsx'
 
@@ -9,7 +9,7 @@ interface Props {
 
 const Card: FC<Props> = ({ children, className }) => {
     return (
-        <CardWrapper className={className}>
+        <CardWrapper key={useId()} className={className}>
             { children }
         </CardWrapper>
     )

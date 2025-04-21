@@ -33,6 +33,8 @@ export interface ITheme {
             additional: {}
         }
         additional: {}
+        input: {}
+        label: {}
     }
 
     fonts: {}

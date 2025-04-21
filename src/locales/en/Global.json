@@ -40,14 +40,31 @@
         "content": {}
     },
     "error_ok": {
-        "login": {
-            "no": "Please enter your login!",
-            "error": "The login entered is invalid!"
-        },
-        "password": {
-            "no": "Please enter your password!",
-            "error": "The password must be at least 9 characters long and include uppercase letters, numbers, and special characters such as \"#@&\"."
-
+        "form": {
+            "login": {
+                "no": "Please enter your login!",
+                "error": "The login entered is invalid!"
+            },
+            "password": {
+                "no": "Please enter your password!",
+                "error": "The password must be at least 9 characters long and include uppercase letters, numbers, and special characters such as \"#@&\"."
+            },
+            "name": {
+                "no": "Please enter your name!",
+                "error": "The name entered is invalid!"
+            },
+            "surname": {
+                "no": "Please enter your last name!",
+                "error": "The entered surname is not allowed!"
+            },
+            "email": {
+                "no": "Please enter your email!",
+                "error": "The email entered is invalid!"
+            },
+            "message": {
+                "no": "Please enter your message!",
+                "error": "Введённый сообщение недопустимо!"
+            }
         },
         "error": "Something went wrong."
     },
@@ -55,7 +72,11 @@
         "placeholder": {
             "input": {
                 "login": "Enter login",
-                "password": "Enter password"
+                "password": "Enter password",
+                "name": "Name",
+                "surname": "Surname",
+                "email": "Email",
+                "message": "Message "
             },
             "status": {
                 "loading": "Loading...",

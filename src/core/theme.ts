@@ -4,7 +4,7 @@ import { ThemeEnum, ITheme } from '../interfaces/styled'
 // ITheme - used for static theme
 export const baseTheme : ITheme = {
     colors: {
-        background: 'rgba(164,212,186,0.8)',
+        background: '#D1E5DA',
         link_text: {
             black: '#000',
             white: '#FFFFFF'
@@ -39,7 +39,12 @@ export const baseTheme : ITheme = {
 
         additional: {
             hover: '#262626',
-        }
+        },
+
+        input: {
+            text: '#B3B3B3'
+        },
+        label: {}
     },
     fonts: {
         noto_sans: 'Noto Sans, sans-serif',

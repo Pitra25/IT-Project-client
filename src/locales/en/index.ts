@@ -10,9 +10,12 @@ import Login from './pages/Login.json'
 import Events from './components/events/Contents.json'
 import Residents from './components/residents/Contents.json'
 
+// organizations
+import Organizations from './components/organizations/Contents.json'
 
 export const translationEn = {
     ...Global,
     ...Hom, ...Cluster, ...Services, ...Login,
-    ...Events, ...Residents
+    ...Events, ...Residents,
+    ...Organizations,
 }

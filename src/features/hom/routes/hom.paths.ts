@@ -1,3 +1,3 @@
-export const HomPaths = {
-    hom: '/'
+export const HomePaths = {
+    home: '/'
 }

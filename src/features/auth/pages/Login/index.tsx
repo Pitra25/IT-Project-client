@@ -1,15 +1,15 @@
 import { type ChangeEvent, type FC, type FormEvent, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { useTranslation } from "react-i18next"
 
-import type { LoginPayload } from '../../types/login.types'
-import {regExpLogin, regExpPassword} from '@/utils'
 import { useAppAction } from '@/hooks'
-import { Card, PinkButton } from '@/components'
 import { useLoginMutation } from '../../api/auth.api'
+import { regExpString, regExpPassword } from '@/utils'
+import { Card, PinkButton } from '@/components'
+import type { LoginPayload } from '../../types/login.types'
 
 import { StyledAuthWrapper } from '../Auth.styled.tsx'
-import {useTranslation} from "react-i18next";
 
 const Login: FC = () => {
     const { setUser } = useAppAction()
@@ -42,15 +42,15 @@ const Login: FC = () => {
         const newErrors: { login?: string, password?: string } = {}
 
         if (!formValues.login) {
-            newErrors.login = t('error_ok.login.no')
-        } else if (!regExpLogin.test(formValues.login)) {
-            newErrors.login = t('error_ok.login.error')
+            newErrors.login = t('error_ok.form.login.no')
+        } else if (!regExpString.test(formValues.login)) {
+            newErrors.login = t('error_ok.form.login.error')
         }
 
         if (!formValues.password) {
-            newErrors.password = t('error_ok.password.no')
+            newErrors.password = t('error_ok.form.password.no')
         } else if (!regExpPassword.test(formValues.password)) {
-            newErrors.password = t('error_ok.password.error')
+            newErrors.password = t('error_ok.form.password.error')
         }
 
         setErrors(newErrors)
@@ -60,6 +60,12 @@ const Login: FC = () => {
     const handleSubmit = async (e: FormEvent): Promise<void> => {
         e.preventDefault()
         if (validateForm()) {
+            // if (formValues.login == 'admin' && formValues.password == '123') {
+            //     setUser(true)
+            //     setFormValues({ login: '', password: '' })
+            //     toast.success(t('messages.text'))
+            // } else { toast.error(t('error_ok.error')) }
+
             const response = await login(formValues as LoginPayload)
             if (!('error' in response)) {
                 setUser(response?.data)
