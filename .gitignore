@@ -13,8 +13,7 @@ dist-ssr
 Full_translated.tsx
 *.local
 
-.env
-.env.example
+#.env
 
 # Editor directories and files
 .vscode/*
