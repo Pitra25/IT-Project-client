@@ -8,9 +8,10 @@ export const MapWrapper = styled.div`
     justify-content: center;
     margin: auto;
 
-    background: rgba(255, 0, 0, 0.45);
+    //background: rgba(255, 0, 0, 0.45);
 
     .ymap {
+        width: 100%;
         max-width: 1023px;
         height: 532px;
         border-radius: 27px;

@@ -5,7 +5,9 @@ import {
     Map,
     Placemark,
     GeolocationControl,
-    Clusterer
+    Clusterer,
+    ZoomControl,
+    RulerControl
 } from '@pbe/react-yandex-maps'
 
 import { Addresses } from "../../../../contents"
@@ -17,15 +19,17 @@ const Maps: FC = () => {
     return (
         <MapWrapper>
             <YMaps query={{apikey: import.meta.env.VITE_YAPI_KEY}} >
-                <Map className='ymap'
+                <Map
+                    className='ymap'
                     defaultState={{
                         center: [54.51, 36.26],
                         zoom: 13,
-                        controls: ["zoomControl", "fullscreenControl"],
+                        controls: [],
                     }}
-                    modules={["control.ZoomControl", "control.FullscreenControl"]}
                 >
+                    <ZoomControl options={{ float: "left" }} />
                     <GeolocationControl options={{ float: "left" }} />
+                    <RulerControl options={{ float: "right" } } />
 
                     <Clusterer
                         options={{

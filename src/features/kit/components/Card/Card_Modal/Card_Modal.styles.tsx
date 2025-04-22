@@ -73,6 +73,10 @@ export const LinerCardWrapper = styled.div`
     /* Мобильные устройства (портретная ориентация) */
     @media (max-width: 575.98px) {
         width: 450px;
+        .card_content{
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     /* Мобильные устройства (альбомная ориентация) и маленькие планшеты */

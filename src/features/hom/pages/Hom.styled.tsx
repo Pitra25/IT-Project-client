@@ -112,4 +112,16 @@ export const HomWrapper = styled.div`
         }
     }
     
+    @media (max-width: 760px) {
+        .card_container,
+        .events_container,
+        .resident_container,
+        .feedback_container{
+            width: 100%;
+            max-width: 1920px;
+            margin-top: 15px;
+            padding: 0 15px;
+        }
+    }
+    
 `
