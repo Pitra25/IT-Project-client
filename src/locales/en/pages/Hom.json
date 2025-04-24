@@ -19,6 +19,9 @@
         "section_resident": {
             "title": "Residents"
         },
+        "section_services": {
+            "title":"Services"
+        },
         "section_Feedback": {
             "title": "Feedback",
             "Feedback": {

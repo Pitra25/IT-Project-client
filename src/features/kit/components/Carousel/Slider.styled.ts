@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const CarouselWrapper = styled.div`
+    
     width: 100%;
     max-width: 1920px;
     overflow: hidden;
@@ -15,7 +16,7 @@ export const CarouselWrapper = styled.div`
         gap: 32px;
         
         .slides{
-            width: 100%;
+            width: 1000%;
             display: flex;
             flex-direction: row;
             overflow: hidden;
@@ -45,7 +46,6 @@ export const CarouselWrapper = styled.div`
         }
     }
 `
-
 
 export const SliderWrapper = styled.div`
     //max-width: 1620px;
@@ -248,6 +248,7 @@ export const SliderWrapper = styled.div`
     //    }
     //}
 `
+
 export const CarouselCardWrapper = styled.div`
     max-width: 1620px;
     height: 400px;

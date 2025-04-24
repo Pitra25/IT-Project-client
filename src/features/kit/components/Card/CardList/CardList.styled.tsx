@@ -18,4 +18,10 @@ export const CardListWrapper = styled.div`
         flex-wrap: wrap;
         gap: 24px;
     }
+    .row_component{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 24px;
+    }
 `

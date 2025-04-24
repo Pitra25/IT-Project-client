@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react'
+import { type FC, useRef, useState } from 'react'
 import { Card_Modal } from '@/components'
 import { useTranslation } from 'react-i18next'
 
@@ -11,23 +11,65 @@ interface CarouselProps {
 }
 
 const Carousel: FC<CarouselProps> = ({ items }) => {
-    const [currentIndex, setCurrentIndex] = useState(0)
+
     const { t } = useTranslation()
 
+    // Refs for DOM elements
+    const containerRef = useRef<HTMLDivElement>(null)
+    const sliderRef = useRef<HTMLDivElement>(null)
+
+    // States
+    const [currentPosition, setCurrentPosition] = useState(0)
+    const [currentMargin, setCurrentMargin] = useState(0)
+    //const [slidesPerPage, setSlidesPerPage] = useState(0)
+    // const [slidesCount, setSlidesCount] = useState(0)
+    // const [containerWidth, setContainerWidth] = useState(0)
+    // const [totalSlides, setTotalSlides] = useState(0)
+
+    const slides = items.length
+
+    // const containerWidth = container.offsetWidth
+    // window.addEventListener("resize", () => Params(containerWidth))
+
     const goToNext = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === items.length - 1 ? 0 : prevIndex + 1
-        )
+        if(currentPosition < slides) {
+            setCurrentMargin(currentMargin - (100 / 2) )
+            setCurrentPosition(currentPosition + 1)
+
+            console.log('Next')
+        }
+        // setCurrentIndex((prevIndex: number) => prevIndex === items.length - 1 ? 338 : prevIndex + 33 )
     }
 
     const goToPrev = () => {
-        setCurrentIndex((prevIndex) =>
-            prevIndex === 0 ? items.length - 1 : prevIndex - 1
-        )
+        if(currentPosition <= slides && currentPosition != 0) {
+            setCurrentMargin(currentMargin + (100 / 2) )
+            setCurrentPosition(currentPosition - 1)
+
+            console.log('Prev')
+        }
+        //setCurrentIndex((prevIndex) => prevIndex === 0 ? items.length - 1 : prevIndex - 338)
     }
 
+    console.log('currentPosition ' + currentPosition)
+
+    // const par = () => {
+    //     setSlidesPerPage(4)
+    //     setSlidesCount(slides - slidesPerPage)
+    //     if (currentPosition > slidesCount) {
+    //         setCurrentPosition(currentPosition - slidesPerPage)
+    //     }
+    //     setCurrentMargin(currentMargin - currentPosition * (100 / slidesPerPage))
+    //
+    //     console.log('currentMargin: ' + currentMargin + ' ' +
+    //         'currentPosition: ' + currentPosition + ' ' +
+    //         'slidesPerPage: ' + slidesPerPage + ' ' +
+    //         'slidesCount: ' + slidesCount)
+    // }
+
     return (
-        <CarouselWrapper>
+
+        <CarouselWrapper ref={containerRef}>
             <div className="carousel_container">
 
                 <button
@@ -40,15 +82,15 @@ const Carousel: FC<CarouselProps> = ({ items }) => {
 
                 <div
                     className="slides"
-                    style={{ transform: `translateX(-${currentIndex * 100}px)` }}
+                    ref={sliderRef}
                 >
                     {items.map((item: any, index) => (
                         <div key={index} className='slide'
-                             // style={{ transform: `translateX(-${currentIndex * 100}px)` }}
+                              style={{ transform: `translateX(${currentMargin}%)` }}
                         >
                             <Card_Modal
-                                titleText={t(`${item.id}.name`)} title={true}
-                                content={t(`${item.id}.content`)} images={item.nameImages}
+                                titleText={t(`Residents.${item.id}.title`)} title={true}
+                                content={t(`Residents.${item.id}.content`)} images={item.nameImages}
                                 nameImg={item.nameImages} variant={'pictureTitle'}/>
                         </div>
                     ))}

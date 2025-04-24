@@ -4,6 +4,7 @@ import { Card, PinkButton } from "@/components"
 import { regExpEmail, regExpString } from "@/utils"
 
 import { FeedbackWrapper } from "./Feedback.styled.tsx"
+// import {useEmail} from "../../../../hooks/useEmail.ts"
 
 const Feedback: FC  = () => {
     const [formValues, setFormValues] = useState({name: '', surname: '', email: '', message: '' })
@@ -55,6 +56,7 @@ const Feedback: FC  = () => {
         e.preventDefault()
         if (validateForm()) {
             console.log(formValues.name + " " + formValues.message)
+            // useEmail
         }
     }
 

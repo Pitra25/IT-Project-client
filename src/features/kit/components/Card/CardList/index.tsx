@@ -7,29 +7,30 @@ interface CardProps {
     content: {}[]
     title: boolean
     type: string
-    variant: 'mineCard' | 'linerCard'
+    variant: 'mineCard' | 'linerCard' | 'pictureTitle' | 'row_content'
     direction: 'column' | 'row'
+    prefix: string
 }
 
-const CardList: FC<CardProps> = ({ content, title, type, variant, direction }) => {
+const CardList: FC<CardProps> = ({ content, title, type, variant, direction, prefix }) => {
     const id: string = useId()
     return (
         <CardListWrapper key={id}>
             <div className={direction}>
-                { cardTypeDefinition(content, title, type, variant) }
+                { cardTypeDefinition(content, title, type, variant, prefix) }
             </div>
         </CardListWrapper>
     )
 }
 
-const cardTypeDefinition = (content: any, title: boolean, type:string, variant: any): ReactNode => {
+const cardTypeDefinition = (content: any, title: boolean, type:string, variant: any, prefix: string): ReactNode => {
     const { t } = useTranslation()
 
     switch (type) {
         case "Card_Modal": {
             return ( content.map((item: any, key: string) => <Card_Modal key={key}
-                titleText={t(`${item.id}.name`)} title={title}
-                content={t(`${item.id}.content`)} images={item.img}
+                titleText={t(`${prefix}.${item.id}.title`)} title={title}
+                content={t(`${prefix}.${item.id}.content`)} images={item.img}
                 nameImg={item.nameImages} variant={variant}/>)
             )
         }

@@ -19,6 +19,9 @@
         "section_resident": {
             "title": "Резиденты"
         },
+        "section_services": {
+            "title":"Услуги"
+        },
         "section_Feedback": {
             "title": "Обратная связь",
             "Feedback": {

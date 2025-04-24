@@ -140,3 +140,38 @@ export const PictureTitleWrapper = styled.div`
         border-radius: 13px;
     }
 `
+
+export const RowContentWrapper = styled.div`
+    width: 790px;
+    height: 208px;
+    display: flex;
+    cursor: pointer;
+    padding: 24px;
+    border-radius: 27px;
+    background-color: ${({theme}) => theme.colors.cards.background};
+    box-shadow: 0 4px 15px 5px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    
+    .row_content{
+        width: 100%;
+    }
+    
+    .card_content{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        gap: 24px;
+
+        .card-img {
+            width: 290px;
+        }
+    }
+    img {
+        width: 290px;
+        height: 160px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 13px;
+    }
+`

@@ -4,7 +4,13 @@ import { AdminWrapper } from "./Admin.styled.tsx"
 const Admin: FC = () => {
     return (
         <AdminWrapper>
-            <div>Admin</div>
+
+            <section>
+                <div className="content">
+
+                </div>
+            </section>
+
         </AdminWrapper>
     )
 }

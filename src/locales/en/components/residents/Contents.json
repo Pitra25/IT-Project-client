@@ -1,26 +1,28 @@
 {
-  "id_001": {
-    "name": "Card 2 0 name",
-    "content": "Card 2 0 content"
-  },
-  "id_002": {
-    "name": "Card 2 1 name",
-    "content": "Card 2 1 content"
-  },
-  "id_003": {
-    "name": "Card 2 2 name",
-    "content": "Card 2 2 content"
-  },
-  "id_004": {
-    "name": "Card 2 3 name",
-    "content": "Card 2 3 content"
-  },
-  "id_005": {
-    "name": "Card 2 4 name",
-    "content": "Card 2 4 content"
-  },
-  "id_006": {
-    "name": "Card 2 5 name",
-    "content": "Card 2 5 content"
+  "Residents": {
+    "id_001": {
+      "title": "Card 2 0 name",
+      "content": "Card 2 0 content"
+    },
+    "id_002": {
+      "title": "Card 2 1 name",
+      "content": "Card 2 1 content"
+    },
+    "id_003": {
+      "title": "Card 2 2 name",
+      "content": "Card 2 2 content"
+    },
+    "id_004": {
+      "title": "Card 2 3 name",
+      "content": "Card 2 3 content"
+    },
+    "id_005": {
+      "title": "Card 2 4 name",
+      "content": "Card 2 4 content"
+    },
+    "id_006": {
+      "title": "Card 2 5 name",
+      "content": "Card 2 5 content"
+    }
   }
 }

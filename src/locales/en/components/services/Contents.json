@@ -1,0 +1,28 @@
+{
+  "Services": {
+    "id_001": {
+      "title": "Territory planning",
+      "content": "content"
+    },
+    "id_002": {
+      "title": "Construction and lighting of modern territories",
+      "content": "content"
+    },
+    "id_003": {
+      "title": "Milling processing",
+      "content": "content"
+    },
+    "id_004": {
+      "title": "Design of buildings and structures",
+      "content": "content"
+    },
+    "id_005": {
+      "title": "3D Printing",
+      "content": "content"
+    },
+    "id_006": {
+      "title": "Reverse engineering",
+      "content": "content"
+    }
+  }
+}

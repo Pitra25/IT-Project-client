@@ -2,17 +2,18 @@ import {type FC, useState } from 'react'
 import { useTranslation } from "react-i18next"
 import { Modal, Row, Col, Typography } from 'antd'
 import { useGetImages } from "@/hooks"
-import ModalWindow from "./components"
+import ModalWindow  from "./components"
 
 import {
     MineCardWrapper,
     LinerCardWrapper,
-    PictureTitleWrapper
+    PictureTitleWrapper,
+    RowContentWrapper
 } from "./Card_Modal.styles.tsx"
 
 interface cardProps {
     content: string
-    variant: 'mineCard' | 'linerCard' | 'pictureTitle'
+    variant: 'mineCard' | 'linerCard' | 'pictureTitle' | 'row_content'
     images: boolean
     nameImg: string
     title: boolean
@@ -61,7 +62,7 @@ const Card_Modal: FC<cardProps> = ({ title, titleText, content, images, nameImg,
                     </MineCardWrapper>
                 )
             }
-            case "linerCard": {
+            case 'linerCard': {
                 return(
                     <LinerCardWrapper>
                         <div className={variant}>
@@ -133,6 +134,50 @@ const Card_Modal: FC<cardProps> = ({ title, titleText, content, images, nameImg,
                             </Row>
                         </Modal>
                     </PictureTitleWrapper>
+                )
+            }
+            case 'row_content': {
+                return(
+                    <RowContentWrapper>
+                        <div onClick={showModal} className={variant}>
+                            <div className='card_content'>
+                                <div className='card-img'>
+                                    { images ? <img src={ urlImg } alt={ titleText }/> : ''}
+                                </div>
+                                <div className='card-content'>
+                                    { title ?
+                                        <div className='name'>
+                                            <span> { titleText } </span>
+                                        </div> : ''
+                                    }
+
+                                    <div className='content_text'>
+                                        <span> { content } </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <Modal
+                            title={title}
+                            open={isModalOpen}
+                            onOk={handleOk}
+                            onCancel={handleCancel}
+                            width={800}
+                            footer={null}
+                        >
+                            <Row gutter={2}>
+                                <Col span={12}>
+                                    { images ? <img src={ urlImg } alt=""/> : ''}
+                                </Col>
+                                <Col span={12}>
+                                    <Paragraph>
+                                        { content }
+                                    </Paragraph>
+                                </Col>
+                            </Row>
+                        </Modal>
+                    </RowContentWrapper>
                 )
             }
         }
