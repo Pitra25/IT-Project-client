@@ -5,8 +5,11 @@ export const authApi = api.injectEndpoints({
         login: builder.mutation({
             query: (payload) => ({
                 url: '/auth/login',
-                method: 'POST',
-                body: payload
+                method: 'GET',
+                params: {
+                    login: payload.login,
+                    password: payload.password
+                }
             })
         }),
         updateProfile: builder.mutation<Promise<void>, null>({
@@ -15,15 +18,11 @@ export const authApi = api.injectEndpoints({
                 method: 'PATCH',
                 body: payload
             })
-        }),
-        getProfile: builder.query<Collections.User, null>({
-            query: () => ({
-                url: '/auth/profile'
-            })
         })
     })
 })
 
 export const {
-    useLoginMutation
+    useLoginMutation,
+    useUpdateProfileMutation,
 } = authApi

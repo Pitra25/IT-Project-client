@@ -22,14 +22,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "*": ["*"],
-      "@/public/*": ["../public/*"],
       "@/components": ["features/kit/components"],
+      "@/constants": ["constants/"],
       "@/store": ["store"],
       "@/utils": ["utils"],
       "@/hooks": ["hooks"],
       "@/core": ["core"],
-      "@/auth/*": ["features/auth/*"],
       "@/pathsConfig": ["router/entities/paths.config.ts"],
       "@/globalTypes": ["types/global.types.ts"],
       "@/assets": ["contents/Assets"]

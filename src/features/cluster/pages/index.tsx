@@ -4,7 +4,31 @@ import { ClusterWrapper } from './Cluster.styled.tsx'
 const Cluster: FC = () => {
     return (
         <ClusterWrapper>
-            <div>Cluster</div>
+
+            <section className='_container'>
+                <div className="content">
+
+                    <span className='title'>Cluster</span>
+
+                </div>
+            </section>
+
+            <section className='_container'>
+                <div className="content">
+
+                    <span className='title'></span>
+
+                </div>
+            </section>
+
+            <section className='_container'>
+                <div className="content">
+
+                    <span className='title'>Cluster</span>
+
+                </div>
+            </section>
+
         </ClusterWrapper>
     )
 }

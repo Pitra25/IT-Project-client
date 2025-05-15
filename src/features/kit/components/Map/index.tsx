@@ -1,4 +1,4 @@
-import {type FC } from 'react'
+import {type FC,} from 'react'
 import { useTranslation } from "react-i18next"
 import {
     YMaps,
@@ -9,6 +9,7 @@ import {
     ZoomControl,
     RulerControl
 } from '@pbe/react-yandex-maps'
+// import { Y_API_KEY } from "@/constants"
 
 import { Addresses } from "../../../../contents"
 import { MapWrapper } from './Map.styled.tsx'

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const PinkButtonStyled = styled.button`
-    width: max-content;
+    width: 100%;
     padding: 0 30px;
     margin: 0 auto;
     border-radius: 10px;
@@ -10,5 +10,4 @@ export const PinkButtonStyled = styled.button`
     font-weight: 700;
     font-size: 20px;
     text-align: center;
-    color: #fff;
 `

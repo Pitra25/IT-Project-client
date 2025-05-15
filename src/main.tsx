@@ -1,4 +1,3 @@
-import { App } from 'antd'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
@@ -17,10 +16,8 @@ const root = createRoot(container)
 root.render(
     <Provider store={ store }>
         <ThemeProvider theme={ baseTheme }>
-            <App>
-                <RouterProvider />
-                <GlobalStyle />
-            </App>
+            <RouterProvider />
+            <GlobalStyle />
         </ThemeProvider>
     </Provider>
 )

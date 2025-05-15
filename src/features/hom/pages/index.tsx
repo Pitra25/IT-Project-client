@@ -1,7 +1,7 @@
 import { type FC } from 'react'
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 import { Card, CardList, Feedback, Maps, Carousel } from "@/components"
-import {  Residents, Services, Events} from "../../../contents"
+import { Residents, Services, Events } from "../../../contents"
 
 import { HomWrapper } from './Hom.styled.tsx'
 

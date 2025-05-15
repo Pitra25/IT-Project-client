@@ -93,7 +93,7 @@ export const HeaderStyledWrapper = styled.header`
 
     .container_contacts_language {
         width: 100%;
-        max-width: 264px;
+        max-width: 350px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -136,7 +136,7 @@ export const HeaderStyledWrapper = styled.header`
         }
         
         .contact {
-            width: 170px;
+            width: 190px;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -145,13 +145,21 @@ export const HeaderStyledWrapper = styled.header`
                 display: flex;
                 flex-direction: row;
                 gap: 12px;
-
-                .email_icon{
-                    width: 26px;    
-                }
-                .phone_icon{
-                    width: 26px;
-                }
+            }
+            
+            .email_icon, .phone_icon{
+                width: 26px;
+                height: 26px;
+            }
+        }
+   
+        .login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            .icon_user_profile {
+                width: 48px;
             }
         }
     }
@@ -163,4 +171,5 @@ export const HeaderStyledWrapper = styled.header`
         align-items: center;
         justify-content: center;
     }
+
 `

@@ -5,7 +5,7 @@ import { Content } from 'antd/es/layout/layout'
 
 const Layout: FC = () => {
     return (
-        <StyledLayout hasSider>
+        <StyledLayout>
             <Content>
                 <Outlet />
             </Content>

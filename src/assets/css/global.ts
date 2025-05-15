@@ -5,7 +5,6 @@ export default createGlobalStyle`
         font-family: ${({ theme }) => theme.fonts.noto_sans};
     }
     
-    
     html, body {
         min-width: 100%;
         min-height: 100vh;
@@ -16,7 +15,6 @@ export default createGlobalStyle`
         padding: 0;
 
         tab-size: 4;
-        color: white;
     }
 
     /* Медиазапросы для разных размеров экранов */

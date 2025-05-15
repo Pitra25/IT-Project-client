@@ -8,6 +8,12 @@ interface AuthState {
         token: string | undefined | null
         id: number | undefined
         login: string | undefined
+        name: string | undefined
+        lastname: string | undefined
+        patronymic: string | undefined | null
+        email: string | undefined
+        isAdmin: boolean
+        dateCreate: string | undefined
     }
 }
 
@@ -15,6 +21,12 @@ const user = JSON.parse(Cookies.get('user') ?? '{}') as {
     token?: string
     id?: number
     login?: string
+    name?: string
+    lastname?: string
+    patronymic?: string | null
+    email?: string
+    isAdmin: boolean
+    dateCreate: string | undefined
 }
 
 const initialState: AuthState = {
@@ -23,6 +35,13 @@ const initialState: AuthState = {
         token: user?.token,
         id: user?.id,
         login: user?.login,
+
+        name: user?.name,
+        lastname: user?.lastname,
+        patronymic: user?.patronymic,
+        email: user?.email,
+        isAdmin: user?.isAdmin,
+        dateCreate: user?.dateCreate
     }
 }
 

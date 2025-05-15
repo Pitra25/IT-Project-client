@@ -1,9 +1,7 @@
 import styled from 'styled-components'
-import { Layout } from 'antd'
 
-export const StyledLayout = styled(Layout)`
-    min-height: 100vh;
-    display: flex;
-    margin:auto;
+export const StyledLayout = styled.div`
+    width: 100%;
+    height: 100%;
     background-color: ${({theme}) => theme.colors.background};
 `
