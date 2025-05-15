@@ -22,7 +22,6 @@ const Footer: FC = () => {
     const loc = useLocation()
     const locName = loc.pathname.split('/')[1]
 
-
     const cluster_link = 'nav.header.cluster.content'
     const services_link = 'nav.header.services.content'
 
