@@ -2,8 +2,6 @@
 
 # 🚀 IT-Project Client
 
-![Project Preview](https://via.placeholder.com/800x400?text=IT-Project+Client+Preview) <!-- Replace with real screenshots -->
-
 Client part of IT project management system with modern React interface. Connects to the REST API of the backend and provides:
 - Task and project management
 - Authorization via JWT and OAuth 2.0
@@ -11,13 +9,13 @@ Client part of IT project management system with modern React interface. Connect
 - Event notifications
 
 ## 🌟 Technology Stack
-| Category | | Technology |
-|-----------------|-------------------------------------|
-| Frontend | React 18, TypeScript 5, Vite 4 |
-| UI libraries | Material-UI (MUI), Emotion |
-| Localization | i18next |
-| API client | Axios, React-Query |
-| Testing | Jest, React Testing Library |
+| Category       | Technology |
+|----------------|-------------------------------------|
+| `Frontend`     | `React 18, TypeScript 5, Vite 4` |
+| `UI libraries` | `Material-UI (MUI), Emotion` |
+| `Localization` | `i18next`|
+| `API client`   | `Axios, React-Query` |
+| `Testing`      | `Jest, React Testing Library` |
 
 ## 🛠️ Quick Start
 
